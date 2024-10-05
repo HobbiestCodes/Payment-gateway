@@ -32,11 +32,11 @@ function App() {
 
 
 
-| Props | Type     | Description                |
+| Props | Type     | Description                | Default    |
 | :-------- | :------- | :------------------------- |
-| `image` | `string` | **Required**. Either link or path of your logo |
-| `brandName` | `string` | **Required**. Name of your Brand|
-| `brandColor` | `string` | **Required**. Hex code value of your brand color |
+| `logo` | `string` | **Required**. Either link or path of your logo | https://picsum.photos/800 (Randomly generated) |
+| `brandName` | `string` | **Required**. Name of your Brand| Unknown |
+| `brandColor` | `string` | **Required**. Hex code value of your brand color | #FFA00A |
 
 
 
