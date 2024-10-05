@@ -1,0 +1,335 @@
+// ---------------------------------------------------------------- CONFIGURATION ---------------------------------------------------------------- //
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.font-p-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.font-p-semiBold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.font-p-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.font-p-extraBold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.font-mon {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-mon-med {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.font-mon-semi {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.font-mon-bold {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.font-mon-extraBold {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+// colors
+
+@mixin flex($jc: center, $al: center, $fd: row, $wp: wrap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $al;
+  flex-direction: $fd;
+  flex-wrap: $wp;
+}
+
+@mixin fullScreen($w: 100vw, $h: 100vh) {
+  width: $w;
+  height: $h;
+}
+
+@mixin fullRatio($w: 100%, $h: 100%) {
+  width: $w;
+  height: $h;
+}
+
+// colors...
+$black: #171717;
+$white: #eeeeee;
+$grey: #d9d9d9;
+
+.glow {
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  color: white;
+  background: blue;
+  //   background-color: $primary;
+  //   box-shadow: 6px 8px 20px rgba($color: $primary, $alpha: 0.6);
+  cursor: pointer;
+  transition: 0.4s all ease;
+  &:hover {
+    transform: scale(0.9);
+    box-shadow: none;
+  }
+}
+
+// numbers (px)...
+$sm: 16px;
+$md: 20px;
+$lg: 24px;
+$xl: 32px;
+$xxl: 48px;
+$full: 100px;
+
+// ratios...
+$fullRatio: 100%;
+$midRatio: 80%;
+$halfRatio: 50%;
+$quaterRatio: 30%;
+
+$breakpoints: (
+  mobile: 0px,
+  tablet: 589px,
+  desktop: 899px,
+);
+
+$maxPoints: (
+  mobile: 590px,
+  tablet: 1023px,
+  desktop: 2080px,
+);
+
+@mixin media($keys...) {
+  @each $key in $keys {
+    @media screen and (min-width: map-get($breakpoints, $key)) and (max-width: map-get($maxPoints, $key)) {
+      @content;
+    }
+  }
+}
+
+// ---------------------------------------------------------------- MAIN CODES ---------------------------------------------------------------- //
+
+.container {
+    background: #f0f0f0;
+  @include fullScreen();
+  @include flex();
+  @include media(mobile) {
+    padding: 0.5rem;
+  }
+
+  .child {
+    @include fullRatio(30%, auto);
+    background: #ffffff;
+    border-radius: 10px;
+    @include flex(flex-start, flex-start, column);
+    overflow: hidden;
+
+    @include media(mobile, tablet) {
+        width: 100%;
+    }
+    .pos {
+      width: 100%;
+      height: auto;
+      @include flex(space-between, center, column-reverse);
+      padding-right: 0.2rem;
+      border-bottom: 1px solid #dbdbdb;
+      //   background-color: red;
+      .context {
+        padding: 1rem;
+        h1 {
+          font-size: 2rem;
+        //   line-height: 50%;
+          @include media(mobile) {
+            font-size: 1.8rem;
+            line-height: 100%;
+          }
+        }
+        h3 {
+          font-size: 1.1rem;
+          font-weight: 400;
+          @include media(mobile) {
+            font-size: 1rem;
+            line-height: normal;
+          }
+        }
+      }
+      .photos {
+        width: 10rem;
+        height: 6rem;
+        padding: 0.3rem;
+        padding-bottom: 0;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+    }
+    .content {
+      width: 100%;
+      height: 64%;
+      @include flex(flex-start, flex-start, column);
+      padding: 0.5rem 1rem;
+
+      h2 {
+        @extend .font-poppins;
+        font-weight: 500;
+      }
+      p {
+        @extend .font-mon;
+      }
+      .payment {
+        width: 100%;
+        height: 12%;
+        margin-top: 1%;
+        .tabu {
+          border-radius: 6px;
+          padding: 0.3rem 0.3rem;
+        //   background-color: #4169e125;
+          @include flex(space-between, center, row);
+          .tabs {
+            width: fit-content;
+            height: fit-content;
+            padding: 0.5rem 2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            // color: #0000ff90;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            transition: 0.2s all cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            @include media(mobile) {
+                padding: 0.5rem 1.3rem;
+            }
+            &.active {
+              transition: 0.2s all cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              background-color: white;
+            //   color: blue;
+              p {
+                font-weight: 700;
+              }
+            }
+            p {
+              font-size: 1.1rem;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .okay {
+          margin-top: 5%;
+          @include flex(center, center, column);
+          gap: 1rem;
+          .input,
+          .button {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            border: 2px solid #cecece;
+            outline: none;
+            font-size: 16px;
+            font-weight: 500;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            &:focus {
+              border: 2px solid var(--dynamic-color);
+            }
+            &::placeholder {
+              color: #bcbcbc;
+              font-weight: 400;
+            }
+            &.button {
+              @include flex(flex-start, center);
+              cursor: pointer;
+              gap: 0.5rem;
+              &.active {
+                border: 2px solid var(--dynamic-color);
+                background-color: white;
+                color: var(--dynamic-color);
+                p {
+                  font-weight: 600;
+                }
+              }
+              img {
+                width: 2.2rem;
+                height: 2.2rem;
+                border-radius: 100px;
+                object-fit: contain;
+              }
+              p {
+                font-weight: 400;
+                font-size: 1.1rem;
+              }
+            }
+          }
+          .paynow {
+            margin-top: 3%;
+            width: 100%;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            font-family: "Montserrat", sans-serif;
+            // color: white;
+            outline: none;
+            border: none;
+            color: var(--dynamic-color);
+            // background-color: rgba($color: currentColor, $alpha: 0.3);
+            background: rgba(var(--dynamic-color-rgb), 0.3);
+            border-radius: 8px;
+            border: 10px;
+            cursor: pointer;
+            transition: 0.3s all ease;
+            &:hover {
+              background-color: var(--dynamic-color);
+              color: white;
+              transform: scale(0.9);
+            }
+          }
+        }
+      }
+    }
+    .last {
+      width: 100%;
+      height: 6%;
+      //   background: rgba($color: blue, $alpha: 0.2);
+      background-color: rgba(var(--dynamic-color-rgb), 0.2);
+      padding: 8px;
+      padding-bottom: 10px;
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--dynamic-color);
+      }
+    }
+  }
+}
